@@ -1,0 +1,11 @@
+.navbar{
+    height: 50px;
+    width:90vw;
+    background-color:aqua;
+    display:flex;
+}
+p{
+    margin-left: 50px;
+    justify-content: center;
+    
+}
