@@ -7,9 +7,23 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import AboutPage from '../Component/AboutPage'
 import PostPage from '../Component/PostPage'
 import axios from "axios"
+import { useEffect } from 'react'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [msg,setmsg]=useState("")
+  
+  useEffect(()=>{
+    axios.get("http://localhost:3000/about")
+    .then((res)=>{
+      console.log("hello urray you connected both frotnend and Backend successFully")
+      setmsg("Connected SuccessFully")
+
+    })
+    .catch((err)=>{
+      console.log("there is error while connecting")
+    })
+    // wont run on every rerender
+  },[])
 
   return (
     <>
@@ -21,6 +35,7 @@ function App() {
         </Routes>
 
     </Router>
+    <p>{msg}</p>
     </>
   )
 }
