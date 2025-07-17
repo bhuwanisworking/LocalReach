@@ -8,6 +8,8 @@ import AboutPage from '../Component/AboutPage'
 import PostPage from '../Component/PostPage'
 import axios from "axios"
 import { useEffect } from 'react'
+import HomePage from '../Component/HomePage'
+import LoginScreen from '../Component/LoginScreen'
 
 function App() {
   const [msg,setmsg]=useState("")
@@ -22,20 +24,21 @@ function App() {
     .catch((err)=>{
       console.log("there is error while connecting")
     })
-    // wont run on every rerender
+    // wont run on every rerender thsts why an empty array is added
   },[])
 
   return (
     <>
     <Router>
-        <NavBar></NavBar>
+        
         <Routes>
+          <Route path='/' element={<HomePage></HomePage>}></Route>
           <Route path='/about' element={<AboutPage></AboutPage>}></Route>
           <Route path="/PostPage" element={<PostPage></PostPage>}></Route>
+          <Route path="/login" element={<LoginScreen></LoginScreen>}></Route>
         </Routes>
 
     </Router>
-    <p>{msg}</p>
     </>
   )
 }
